@@ -98,7 +98,7 @@ Como vemos en la imagen, tenemos acceso al Panel de Login de Wordpress, pero de 
 
 Una vez tenemos capturada la petición, con CTRL + I la envíamos al Intruder. Ya en la pestaña de Intruder, vamos a seleccionar el nombre de usuario que introducimos al azar y le vamos a dar a lo siguiente 
 
-![Descripción de la imagen](TryHackme/MR Robot/24.jpeg)
+![Imagen01](24.jpeg)
 
 
 Ahora pinchamos en la pestaña Payloads, y cargamos el diccionario que encontramos anteriormente (fsociety.dic). Ya solo nos queda iniciar el ataque. Antes de ello, tenemos que deshabilitar o desmarcar el URL encode (Abajo, en la parte Payload Encoding, simplemente desmarcamos esa casilla). Para empezar el ataque pinchamos sobre Start Attack
