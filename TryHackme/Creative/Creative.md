@@ -45,6 +45,7 @@ nmap -sC -sV -p<Puertos_a_Escanear> <IP_Objetivo> -oN <Nombre_Archivo>
 Si le hacemos un cat al archivo generado, veremos más información. 
 
 ![Imagen03](3.jpeg)
+
 Destacamos en primer lugar, que estamos enfrentándonos a un Ubuntu. 
 También vemos por ahí la versión de SSH que se está utilizando (OpenSSH 8.2). Tratamos de ver si existe alguna vulnerabilidad asociada a esta versión, pero no encontramos nada. Las versiones inferiores a la 7.7 si que son vulnerables a una enumeración de usuarios, pero en este caso, poco más vamos a poder hacer por esta vía sin credenciales de acceso. 
 En cuanto al puerto 80, ejecuta un servicio web, con Nginx 1.18.0. 
@@ -116,6 +117,7 @@ Con el parámetro --append-domain, le estamos indicando a gobuster que nos agreg
 Si le hacemos un cat al archivo generado (subdomain.txt), veremos que nos ha encontrado el subdominio "beta.creative.thm", que tendremos que añadir también a nuestro /etc/hosts. 
 
 ![Imagen010](10.jpeg)
+
 Otra forma de hacerlo es con ffuf, empleando en este caso el siguiente comando 
 
 ```bash
@@ -174,6 +176,7 @@ ffuf -u 'http://beta.creative.thm/' -d "url=http://127.0.0.1:FUZZ/" -w <(seq 1 6
   - *-fs* En este caso, le estamos indicando que no se muestren respuestas con un tamaño de 13 bytes, ya que son demasiado pequeñas y generalmente son páginas de error. 
 
 ![Imagen016](16.jpeg)
+
 Nuestras sospecha se confirmaron. Vemos que internamente, se están ejecutando dos servicios web. Uno por el puerto 80 (que es el mismo que se expone al exterior), y otro en el puerto 1337, que obviamente, vamos a revisar ahora mismo. 
 
 ```
@@ -310,6 +313,7 @@ gcc -fPIC -shared -o shell.so shell.c -nostartfiles
 ```
 
 ![Imagen027](27.jpeg)
+
 Pues ya tenemos lista nuestra biblioteca compartida maliciosa. Podemos hacerle un file si queremos para asegurarnos. Ahora, vamos a ejecutar el comando ping (que podemos hacerlo como root), pero cargándole la biblioteca maliciosa que hemos creado. De esta forma, al ejecutarse, y al hacerlo como root, lo que estará haciendo es darnos una Bash. Vamos a ponerlo a prueba 
 
 ```bash
@@ -317,6 +321,7 @@ sudo LD_PRELOAD=/tmp/shell.so ping
 ```
 
 ![Imagen028](28.jpeg)
+
 Tal y como vemos, somos root. Ya solo nos queda ir al directorio personal del usuario root y hacerle un cat a la Flag 
 
 ```bash
