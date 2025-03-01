@@ -234,7 +234,7 @@ Como vemos, nos devuelve la ruta en la que hay un archivo llamado "second ingred
 less /home/rick/second\ ingredients
 
 ```
-Como vemos, hemos puesto *(\)* para escapar el espacio en el nombre del archivo, ya que si no, less interpretaría cada nombre por separado y no funcionaría. Otra forma de escapar los espacios, es por ejemplo metiendo el archivo, o mejor dicho, la ruta que contiene el archivo, entre comillas simples o dobles
+Como vemos, hemos puesto barra invertida para escapar el espacio en el nombre del archivo, ya que si no, less interpretaría cada nombre por separado y no funcionaría. Otra forma de escapar los espacios, es por ejemplo metiendo el archivo, o mejor dicho, la ruta que contiene el archivo, entre comillas simples o dobles
 
 ```bash
 less '/home/rick/second ingredients'
